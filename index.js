@@ -2,8 +2,6 @@ let name = document.querySelector('#name');
 let tel = document.querySelector('#tel');
 let button = document.querySelector('button');
 let table = document.querySelector('table');
-let edit = document.querySelector('#edit');
-let x = document.querySelector('#x');
 
 tel.addEventListener('keypress', function (e) {
     if (e.key === 'Enter') {
@@ -20,7 +18,7 @@ button.addEventListener('click', function() {
         cell1.innerText = name.value;
         cell2.innerText = tel.value;
         cell3.innerHTML = `<i class="fas fa-edit" id="edit"></i>
-        <i class="fas fa-window-close" id="x"></i>`
+        <i class="fas fa-window-close" id="x"></i>`;
         name.value = "";
         tel.value = "";
     }
