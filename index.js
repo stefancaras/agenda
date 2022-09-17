@@ -15,8 +15,8 @@ button.addEventListener('click', function() {
         let cell1 = row.insertCell(0);
         let cell2 = row.insertCell(1);
         let cell3 = row.insertCell(2);
-        cell1.innerText = contactName.value;
-        cell2.innerText = tel.value;
+        cell1.textContent = contactName.value;
+        cell2.textContent = tel.value;
         cell3.innerHTML = `<i class="fas fa-edit"></i>
         <i class="fas fa-window-close"></i>`;
         contactName.value = "";
@@ -30,8 +30,8 @@ table.addEventListener('click', function(event) {
     if (clickedElement.classList.contains('fa-window-close')) {
 		clickedElement.parentNode.parentNode.remove();
 	} else if (clickedElement.classList.contains('fa-edit')) {
-		contactName.value = td1.innerText;
-        tel.value = td1.nextSibling.innerText;
+		contactName.value = td1.textContent;
+        tel.value = td1.nextSibling.textContent;
         clickedElement.parentNode.parentNode.remove();
 	}
 });
