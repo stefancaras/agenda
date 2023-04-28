@@ -1,37 +1,27 @@
-let contactName = document.querySelector('#contactName');
-let tel = document.querySelector('#tel');
-let button = document.querySelector('button');
-let table = document.querySelector('table');
+const $ = (query) => document.querySelector(query);
 
-tel.addEventListener('keypress', function (e) {
-    if (e.key === 'Enter') {
-      button.click();
-    }
-});
-
-button.addEventListener('click', function() {
-    if (contactName.value != "" && tel.value != "") {
-        let row = table.insertRow(1);
-        let cell1 = row.insertCell(0);
-        let cell2 = row.insertCell(1);
-        let cell3 = row.insertCell(2);
-        cell1.textContent = contactName.value;
-        cell2.textContent = tel.value;
-        cell3.innerHTML = `<i class="fas fa-edit"></i>
+$("button").addEventListener("click", () => {
+  if ($("#name").value !== "" && $("#tel").value !== "") {
+    let row = $("table").insertRow(1);
+    let cell1 = row.insertCell(0);
+    let cell2 = row.insertCell(1);
+    let cell3 = row.insertCell(2);
+    cell1.textContent = $("#name").value;
+    cell2.textContent = $("#tel").value;
+    cell3.innerHTML = `<i class="fas fa-edit"></i>
         <i class="fas fa-window-close"></i>`;
-        contactName.value = "";
-        tel.value = "";
-    }
+    $("#name").value = "";
+    $("#tel").value = "";
+  }
 });
 
-table.addEventListener('click', function(event) {
-    const clickedElement = event.target;
-    const td1 = clickedElement.parentNode.parentNode.firstChild;
-    if (clickedElement.classList.contains('fa-window-close')) {
-		clickedElement.parentNode.parentNode.remove();
-	} else if (clickedElement.classList.contains('fa-edit')) {
-		contactName.value = td1.textContent;
-        tel.value = td1.nextSibling.textContent;
-        clickedElement.parentNode.parentNode.remove();
-	}
+$("table").addEventListener("click", (e) => {
+  const td1 = e.target.parentNode.parentNode.firstChild;
+  if (e.target.classList.contains("fa-window-close")) {
+    e.target.parentNode.parentNode.remove();
+  } else if (e.target.classList.contains("fa-edit")) {
+    $("#name").value = td1.textContent;
+    $("#tel").value = td1.nextSibling.textContent;
+    e.target.parentNode.parentNode.remove();
+  }
 });
